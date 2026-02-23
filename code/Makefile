@@ -1,16 +1,15 @@
 FC = gfortran
-FFLAGS = -Wall -Wextra -ffree-line-length-none -fPIC -g -fcheck=all -fbacktrace
-LFLAGS = 
+FFLAGS = -g -Wall -Wextra -Wimplicit-interface -fmax-errors=5
 
-OBJ = utility.o timestep.o orbits.o
+OBJ = utility.o problemsetup.o discreteFourierTransform.o boundaryValueProblem.o
 
-orbits.ex: $(OBJ)
-	$(FC) -o $@ $^ $(LFLAGS) $(FFLAGS)
+solveBVP.ex: $(OBJ)
+	$(FC) $(FFLAGS) -o $@ $^
 
 %.o: %.f90
-	$(FC) -c -o $@ $< $(FFLAGS)
+	$(FC) $(FFLAGS) -c $<
 
 .PHONY: clean
 
 clean:
-	rm -f orbits.ex *.o *.mod
+	rm -f solveBVP.ex *.o *.mod
