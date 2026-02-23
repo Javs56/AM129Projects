@@ -1,0 +1,7 @@
+num_masses = 4
+alpha = 0
+C = 0.9515
+tFinal(pi) = 10
+run_name = solution_n-3_alpha-0.0_C1.0
+
+            #you can change the number after these names
